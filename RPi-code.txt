@@ -1,0 +1,101 @@
+import RPi.GPIO as GPIO
+import time
+GPIO.setwarnings(False) 
+GPIO.cleanup()
+
+GPIO.setmode(GPIO.BCM)
+TRIG_1 = 4
+TRIG_2 = 17
+
+ECHO_1 = 27
+ECHO_2 = 22
+
+IR_1 = 5
+IR_2 = 6
+
+LED = 13
+
+GPIO.setup(TRIG_1, GPIO.OUT)
+GPIO.setup(TRIG_2, GPIO.OUT)
+GPIO.setup(ECHO_1, GPIO.IN)
+GPIO.setup(ECHO_2, GPIO.IN)
+GPIO.setup(IR_1, GPIO.IN)
+GPIO.setup(IR_2, GPIO.IN)
+GPIO.setup(LED, GPIO.OUT)
+
+def road_block()
+	GPIO.output(LED,GPIO.HIGH)
+def road_unblock()
+	GPIO.output(LED,GPIO.LOW)
+
+def get_distance():
+	GPIO.output(TRIG, True)
+	time.sleep(.0001)
+	GPIO.output(TRIG, False)
+	while GPIO.input(ECHO)==False
+	start=time.time()
+	while GPIO.input(ECHO)==True
+	end=time.time()
+
+
+	sig_time=end-start
+
+	#cm
+	distance= sig_time/.000058
+	print('distance:{} cm'. format(distance))
+	return distance
+
+
+def get_distance1():
+	GPIO.output(TRIG_1, True)
+	time.sleep(.0001)
+	GPIO.output(TRIG_1, False)
+	while GPIO.input(ECHO_1)==False
+	start=time.time()
+	while GPIO.input(ECHO_1)==True
+	end=time.time()
+
+
+	sig_time1=end-start
+
+	#cm
+	distance1= sig_time1/.000058
+	print('distance1:{} cm'. format(distance1))
+	return distance1
+
+
+while True:
+
+	distance= get.distance()
+	time.sleep(.05)
+
+if distance>=1 and IR_1=1:
+	road_block()
+
+elif if distance1>=1 and IR_2=1:
+	road_unblock()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//code down below is for both sensor
+
+while True:
+	x=int(input("first input=" ))
+	y=int(input("second input= "))
+	
+	if x>=50 and y>=50:
+		GPIO.output(24, GPIO.HIGH) 
+	else:
+		GPIO.output(24, GPIO.LOW)
